@@ -5,13 +5,10 @@ use ratatui::{
     Terminal,
 };
 
+use crate::app::App;
 use crate::terminal_handle::TerminalHandle;
-use crate::App;
 
-pub fn render_widget(
-    terminal: &mut Terminal<CrosstermBackend<TerminalHandle>>,
-    app: &mut App,
-) -> () {
+pub fn render_ui(terminal: &mut Terminal<CrosstermBackend<TerminalHandle>>, app: &mut App) -> () {
     terminal
         .draw(|f| {
             let area = f.area();

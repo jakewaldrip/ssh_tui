@@ -1,18 +1,9 @@
 use app_server::AppServer;
 
+mod app;
 mod app_server;
 mod terminal_handle;
 mod widget;
-
-struct App {
-    pub counter: usize,
-}
-
-impl App {
-    pub fn new() -> App {
-        Self { counter: 0 }
-    }
-}
 
 #[tokio::main]
 async fn main() {

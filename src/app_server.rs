@@ -10,9 +10,9 @@ use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::sync::Mutex;
 
+use crate::app::App;
 use crate::terminal_handle::TerminalHandle;
-use crate::widget::render_widget;
-use crate::App;
+use crate::widget::render_ui;
 
 pub type SshTerminal = Terminal<CrosstermBackend<TerminalHandle>>;
 
@@ -38,7 +38,7 @@ impl AppServer {
 
                 for (_, (terminal, app)) in clients.lock().await.iter_mut() {
                     app.counter += 1;
-                    render_widget(terminal, app)
+                    render_ui(terminal, app)
                 }
             }
         });
