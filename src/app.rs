@@ -1,9 +1,11 @@
 pub struct App {
-    pub counter: usize,
+    pub fact: String,
 }
 
 impl App {
     pub fn new() -> App {
-        Self { counter: 0 }
+        Self {
+            fact: String::from("A fact would go here about kris because it's good"),
+        }
     }
 }

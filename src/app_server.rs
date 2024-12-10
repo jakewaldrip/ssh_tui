@@ -34,10 +34,9 @@ impl AppServer {
         let clients = self.clients.clone();
         tokio::spawn(async move {
             loop {
-                tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
+                tokio::time::sleep(tokio::time::Duration::from_millis(250)).await;
 
                 for (_, (terminal, app)) in clients.lock().await.iter_mut() {
-                    app.counter += 1;
                     render_ui(terminal, app)
                 }
             }
@@ -110,13 +109,6 @@ impl Handler for AppServer {
             b"q" => {
                 self.clients.lock().await.remove(&self.id);
                 session.close(channel)?;
-            }
-            // Pressing 'c' resets the counter for the app.
-            // Only the client with the id sees the counter reset.
-            b"c" => {
-                let mut clients = self.clients.lock().await;
-                let (_, app) = clients.get_mut(&self.id).unwrap();
-                app.counter = 0;
             }
             _ => {}
         }
