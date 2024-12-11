@@ -10,7 +10,7 @@ use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::sync::Mutex;
 
-use crate::app::App;
+use crate::app::{get_random_fact, App, MenuSelection};
 use crate::terminal_handle::TerminalHandle;
 use crate::widget::render_ui;
 
@@ -109,6 +109,21 @@ impl Handler for AppServer {
             b"q" => {
                 self.clients.lock().await.remove(&self.id);
                 session.close(channel)?;
+            }
+            b"f" => {
+                let mut clients = self.clients.lock().await;
+                let (_, app) = clients.get_mut(&self.id).unwrap();
+                app.menu_selection = MenuSelection::Facts;
+            }
+            b"a" => {
+                let mut clients = self.clients.lock().await;
+                let (_, app) = clients.get_mut(&self.id).unwrap();
+                app.menu_selection = MenuSelection::About;
+            }
+            b"n" => {
+                let mut clients = self.clients.lock().await;
+                let (_, app) = clients.get_mut(&self.id).unwrap();
+                app.fact = get_random_fact();
             }
             _ => {}
         }
