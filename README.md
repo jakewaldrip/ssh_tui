@@ -6,7 +6,7 @@ By leveraging [russh](https://github.com/Eugeny/russh) and [ratatui](https://git
 
 ## TODO
 * [X] Split the example into separate files for easier extension
-* [ ] Expand the widget to implement a simple interactive process
-* [ ] Deploy on VPS to prove the concept end to end using an existing owned domain
-  * [ ] Ensure we can still ssh into the server normally
-  * [ ] Ensure our current deployed applications remain online
+* [X] Expand the widget to implement a simple interactive process
+* [X] Deploy on VPS to prove the concept end to end using an existing owned domain
+  * [X] Ensure we can still ssh into the server normally
+  * [X] Ensure our current deployed applications remain online
