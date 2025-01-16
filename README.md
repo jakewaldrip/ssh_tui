@@ -6,5 +6,4 @@ By leveraging [russh](https://github.com/Eugeny/russh) and [ratatui](https://git
 
 ### How to Access
 1. Create a ssh key-pair on your machine (Kris Fact's currently leverages public key authentication, and accepts no fallbacks)
-2. SSH into port 2222 using the URL `krisfacts.jacobwaldrip.com`
-  a. `ssh krisfacts.jacobwaldrip.com -p 2222`
+2. `ssh krisfacts.jacobwaldrip.com -p 2222`
